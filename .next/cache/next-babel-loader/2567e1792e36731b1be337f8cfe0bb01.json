@@ -1,0 +1,1 @@
+{"ast":null,"code":"// @ts-ignore\nconst host = false ? \"http://localhost:5000\" : \"\";\nexport default host;","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport React from \"react\";\n\nvar Question = function Question(_ref) {\n  var data = _ref.data;\n  return /*#__PURE__*/_jsx(\"div\", {\n    children: data.uuid\n  });\n};\n\nexport default Question;","map":null,"metadata":{},"sourceType":"module"}
