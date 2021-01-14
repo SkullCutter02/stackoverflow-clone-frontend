@@ -1,9 +1,10 @@
 import React, { useState, useContext, useRef } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import PageHandlers from "../components/PageHandlers";
 
 import host from "../utils/host";
 import { UserContext } from "../context/UserContext";
+import { getCookie } from "../utils/functions";
 
 type RequestType = {
   requests: {
@@ -20,6 +21,7 @@ const AdminPage = () => {
   const [page, setPage] = useState<number>(1);
 
   const userContext = useContext(UserContext);
+  const queryClient = useQueryClient();
 
   const nameRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
@@ -63,6 +65,16 @@ const AdminPage = () => {
     }
   };
 
+  const deleteRequest = async (uuid: string) => {
+    await fetch(`${host}/requests/${uuid}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${getCookie("token")}`,
+      },
+    });
+    await queryClient.prefetchQuery(["requests", page]);
+  };
+
   if (userContext.user === undefined) {
     return <div />;
   }
@@ -84,6 +96,9 @@ const AdminPage = () => {
                     <a href={request.link} style={{ color: "white" }}>
                       {request.link}
                     </a>
+                    <button onClick={() => deleteRequest(request.uuid)}>
+                      Remove
+                    </button>
                   </div>
                 ))}
                 <PageHandlers
