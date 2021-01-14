@@ -15,7 +15,6 @@ const queryClient = new QueryClient();
 function App({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
-      <script>0</script>
       <Head>
         <title>
           AskProgramming | The ultimate site to ask for programming help!
@@ -23,6 +22,7 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <UserContextProvider>
+          <script>0</script>
           <Layout />
           <Component {...pageProps} />
         </UserContextProvider>
