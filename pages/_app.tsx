@@ -22,7 +22,6 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <UserContextProvider>
-          <script>0</script>
           <Layout />
           <Component {...pageProps} />
         </UserContextProvider>
