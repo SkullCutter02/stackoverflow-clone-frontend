@@ -21,16 +21,8 @@ const Navbar: React.FC = () => {
   const router = useRouter();
 
   const logOut = async () => {
-    try {
-      await fetch(`${host}/auth/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
-      userContext.setState(null);
-      await router.reload();
-    } catch (err) {
-      console.log(err);
-    }
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    await router.reload();
   };
 
   const hideNav = () => {
