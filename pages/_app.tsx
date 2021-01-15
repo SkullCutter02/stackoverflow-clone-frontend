@@ -9,6 +9,7 @@ import { UserContextProvider } from "../context/UserContext";
 
 import "../styles.css";
 import "../hljs-styles.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 const queryClient = new QueryClient();
 

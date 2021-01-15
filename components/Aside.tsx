@@ -19,7 +19,7 @@ const Aside: React.FC<Props> = ({ borderSide }) => {
       <aside>
         <Link href={getCookie("token") ? "/request/question" : "/auth/signup"}>
           <button className="section-btn ask-question-btn">
-            <FontAwesomeIcon icon={faPencilAlt} color={"white"} width={"13"} />{" "}
+            <FontAwesomeIcon icon={faPencilAlt} color={"white"} width={"8"} />{" "}
             Ask a Question
           </button>
         </Link>
@@ -31,7 +31,7 @@ const Aside: React.FC<Props> = ({ borderSide }) => {
           }
         >
           <button className="section-btn request-community-btn">
-            <FontAwesomeIcon icon={faTags} color={"white"} width={"13"} />{" "}
+            <FontAwesomeIcon icon={faTags} color={"white"} width={"8"} />{" "}
             Request a Community
           </button>
         </Link>
