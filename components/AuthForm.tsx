@@ -15,6 +15,14 @@ const AuthForm: React.FC<Props> = ({ formType }) => {
   const router = useRouter();
   const redirect = router.query.redirect;
 
+  function setCookie(rememberMe: HTMLInputElement, data: any) {
+    if (rememberMe.checked) {
+      document.cookie = `token=${data.token}; max-age=${31536000}; secure=true`;
+    } else {
+      document.cookie = `token=${data.token}; secure=true`;
+    }
+  }
+
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -55,6 +63,9 @@ const AuthForm: React.FC<Props> = ({ formType }) => {
               errorMsg.innerText = data.msg;
             } else {
               errorMsg.innerText = "";
+
+              setCookie(rememberMe, data);
+
               const payload = JSON.parse(atob(data.token.split(".")[1]));
               fetch(`${host}/users/${payload.uuid}`)
                 .then((res) => res.json())
@@ -90,8 +101,10 @@ const AuthForm: React.FC<Props> = ({ formType }) => {
               errorMsg.innerText = data.msg;
             } else {
               errorMsg.innerText = "";
+
+              setCookie(rememberMe, data);
+
               const payload = JSON.parse(atob(data.token.split(".")[1]));
-              console.log(payload);
               fetch(`${host}/users/${payload.uuid}`)
                 .then((res) => res.json())
                 .then((data) => userContext.setState(data))
@@ -122,6 +135,9 @@ const AuthForm: React.FC<Props> = ({ formType }) => {
               errorMsg.innerText = data.msg;
             } else {
               errorMsg.innerText = "";
+
+              setCookie(rememberMe, data);
+
               const payload = JSON.parse(atob(data.token.split(".")[1]));
               fetch(`${host}/users/${payload.uuid}`)
                 .then((res) => res.json())
