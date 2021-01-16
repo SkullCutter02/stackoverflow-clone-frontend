@@ -37,9 +37,11 @@ const RequestPostPage: React.FC = () => {
   useEffect(() => {
     const tagExpand = document.getElementById("expand");
     if (text !== "") {
+      tagExpand.style.visibility = "visible";
       tagExpand.style.width = "80%";
       tagExpand.style.height = "190px";
     } else {
+      tagExpand.style.visibility = "hidden";
       tagExpand.style.width = "0";
       tagExpand.style.height = "0";
     }
@@ -252,6 +254,7 @@ const RequestPostPage: React.FC = () => {
         }
 
         .tags-expand {
+          visibility: hidden;
           width: 0;
           height: 0;
           background: #2b2b2b;
@@ -260,6 +263,7 @@ const RequestPostPage: React.FC = () => {
           display: grid;
           grid-template-rows: 1fr 1fr;
           grid-template-columns: 1fr 1fr 1fr;
+          margin-bottom: 20px;
         }
 
         .tag-container {

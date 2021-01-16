@@ -33,7 +33,7 @@ const TagExpand: React.FC<Props> = ({ community, tagClick }) => {
             <p className="tag-name">{community.name}</p>
           </div>
         </div>
-        <p>{community.description}</p>
+        <p className="description">{community.description}</p>
       </div>
 
       <style jsx>{`
@@ -43,8 +43,6 @@ const TagExpand: React.FC<Props> = ({ community, tagClick }) => {
         }
 
         .tags-expand-element {
-          height: 87%;
-          overflow: hidden;
           font-size: 0.8rem;
         }
 
@@ -65,6 +63,13 @@ const TagExpand: React.FC<Props> = ({ community, tagClick }) => {
 
         .tag-name {
           padding: 2px 7px;
+        }
+
+        .description {
+          word-wrap: break-word;
+          overflow: hidden;
+          line-height: 1.1em;
+          max-height: ${1.1 * 4}em;
         }
       `}</style>
     </React.Fragment>
